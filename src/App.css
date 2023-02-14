@@ -12,6 +12,10 @@
 
 .form-container {
   border: solid 1px white;
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+  padding: 1em;
 }
 
 .form-header-container {

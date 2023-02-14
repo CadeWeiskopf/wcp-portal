@@ -15,6 +15,7 @@ export default function CheckOutForm() {
       >
         <input
           type="text"
+          placeholder="test"
           required
         />
         <button>Submit</button>
