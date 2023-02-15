@@ -41,4 +41,5 @@
   background-color: rgba(0, 0, 0, 0.95);
   padding: 2em;
   word-break: break-all;
+  box-sizing: border-box;
 }
