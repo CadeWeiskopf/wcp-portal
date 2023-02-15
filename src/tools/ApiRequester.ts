@@ -1,5 +1,6 @@
 export class ApiRequester {
   constructor() {
+    //alert(window.parent.localStorage.getItem("shopify_cart"));
     if (!process.env.REACT_APP_API_URL) {
       throw Error("Missing environment variables");
     }

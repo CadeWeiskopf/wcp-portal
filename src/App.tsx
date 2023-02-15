@@ -16,10 +16,12 @@ function App() {
     isLoading,
     setIsLoading,
     apiRequester,
+    cart,
+    setCart,
   } = useContext(AppContext);
 
   useEffect(() => {
-    async function getData() {
+    /*async function getData() {
       setLoadingMessage("Getting data...");
       setIsLoading(true);
       try {
@@ -28,20 +30,27 @@ function App() {
         setIsLoading(false);
         setIsError(true);
         if (e instanceof Error) {
-          setErrorMessage(`${e.message}  Please refresh and try again.`);
+          setErrorMessage(`${e.message}. Please refresh and try again.`);
         } else {
           setErrorMessage("Unexpected error. Please refresh and try again.");
         }
       }
     }
-    getData();
+    getData();*/
+    window.addEventListener("message", (e) => {
+      console.log(e);
+      if (e.origin === "https://csgcwtest.myshopify.com") {
+        console.log(`shopifyData->`, e.data);
+        setCart(e.data);
+      }
+    });
   }, []);
 
   return (
     <div className="App">
       {isError && <ErrorWindow message={errorMessage} />}
       {isLoading && <PopupWindow message={loadingMessage} />}
-      <CheckOutForm />
+      <CheckOutForm cart={cart} />
     </div>
   );
 }

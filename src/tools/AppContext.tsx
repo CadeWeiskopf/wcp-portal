@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { ApiRequester } from "./ApiRequester";
 
+export interface CartProps {
+  items: object[];
+}
+
 interface AppContextProps {
   isError: boolean;
   setIsError: React.Dispatch<React.SetStateAction<boolean>>;
@@ -11,6 +15,8 @@ interface AppContextProps {
   loadingMessage: string;
   setLoadingMessage: React.Dispatch<React.SetStateAction<string>>;
   apiRequester: ApiRequester;
+  cart: CartProps;
+  setCart: React.Dispatch<React.SetStateAction<CartProps>>;
 }
 
 const AppContext = React.createContext<AppContextProps>({
@@ -23,6 +29,8 @@ const AppContext = React.createContext<AppContextProps>({
   loadingMessage: "",
   setLoadingMessage: () => {},
   apiRequester: new ApiRequester(),
+  cart: { items: [{}] },
+  setCart: () => {},
 });
 
 function AppContextProvider(props: any) {
@@ -31,6 +39,7 @@ function AppContextProvider(props: any) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [loadingMessage, setLoadingMessage] = useState<string>("");
   const [apiRequester] = useState<ApiRequester>(new ApiRequester());
+  const [cart, setCart] = useState<CartProps>({ items: [{}] });
   return (
     <AppContext.Provider
       value={{
@@ -43,6 +52,8 @@ function AppContextProvider(props: any) {
         loadingMessage,
         setLoadingMessage,
         apiRequester,
+        cart,
+        setCart,
       }}
     >
       {props.children}
