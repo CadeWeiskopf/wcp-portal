@@ -1,5 +1,6 @@
 import "./App.css";
 import CheckOutForm from "./components/CheckOutForm";
+import { AppContextProvider } from "./tools/AppContext";
 
 function App() {
   return (
@@ -9,4 +10,10 @@ function App() {
   );
 }
 
-export default App;
+export default () => {
+  return (
+    <AppContextProvider>
+      <App />
+    </AppContextProvider>
+  );
+};
