@@ -12,7 +12,12 @@ function App() {
     apiRequester,
   } = useContext(AppContext);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    async function getData() {
+      await apiRequester.getData();
+    }
+    getData();
+  }, []);
 
   return (
     <div className="App">
