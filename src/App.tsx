@@ -4,11 +4,16 @@ import CheckOutForm from "./components/CheckOutForm";
 import AppContext, { AppContextProvider } from "./tools/AppContext";
 
 function App() {
-  const { loadingMessage, setLoadingMessage, isLoading, setIsLoading } =
-    useContext(AppContext);
-  useEffect(() => {
-    setLoadingMessage("test");
-  }, []);
+  const {
+    loadingMessage,
+    setLoadingMessage,
+    isLoading,
+    setIsLoading,
+    apiRequester,
+  } = useContext(AppContext);
+
+  useEffect(() => {}, []);
+
   return (
     <div className="App">
       <CheckOutForm />
