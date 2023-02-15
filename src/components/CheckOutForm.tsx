@@ -19,7 +19,11 @@ export default function CheckOutForm(props: CheckOutProps) {
         className="form-body-container"
         onSubmit={formSubmit}
       >
-        <p>{JSON.stringify(props.cart)}</p>
+        {props.cart.items.map((item, index) => (
+          <p key={index}>
+            {item.product_title} (x {item.quantity})
+          </p>
+        ))}
         <input
           type="text"
           placeholder="test"
