@@ -28,7 +28,7 @@
 }
 
 .popupwindow-container {
-  background-color: rgba(255, 0, 0, 0.5);
+  background-color: rgba(0, 255, 0, 0.5);
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -39,6 +39,24 @@
 }
 
 .popupwindow {
+  background-color: rgba(0, 0, 0, 0.95);
+  padding: 2em;
+  word-break: break-all;
+  box-sizing: border-box;
+}
+
+.errorwindow-container {
+  background-color: rgba(255, 0, 0, 0.5);
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+}
+
+.errorwindow {
   background-color: rgba(0, 0, 0, 0.95);
   padding: 2em;
   word-break: break-all;
