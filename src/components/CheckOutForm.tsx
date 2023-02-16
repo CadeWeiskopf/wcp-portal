@@ -7,6 +7,7 @@ interface CheckOutProps {
 const formSubmit = (e: React.FormEvent) => {
   e.preventDefault();
   console.log(`submit`);
+  window.parent.postMessage("complete", "*");
 };
 
 export default function CheckOutForm(props: CheckOutProps) {
