@@ -38,9 +38,9 @@ function App() {
     }
     getData();*/
     window.addEventListener("message", (e) => {
-      console.log(e);
+      //console.log(e);
       if (e.origin === "https://csgcwtest.myshopify.com") {
-        console.log(`shopifyData->`, e.data);
+        //console.log(`shopifyData->`, e.data);
         setCart(e.data);
       }
     });
