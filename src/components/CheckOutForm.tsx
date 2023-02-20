@@ -21,7 +21,10 @@ export default function CheckOutForm(props: CheckOutProps) {
       </div>
       <form
         className="form-body-container"
-        onSubmit={(e) => formSubmit(e, apiRequester)}
+        onSubmit={(e) => {
+          e.preventDefault();
+          formSubmit(e, apiRequester);
+        }}
       >
         {props.cart.items.map((item, index) => (
           <p key={index}>
