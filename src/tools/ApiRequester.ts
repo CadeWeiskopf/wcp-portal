@@ -9,7 +9,7 @@ export class ApiRequester {
     const response = await (
       await fetch(`${process.env.REACT_APP_API_URL}`)
     ).json();
-    if (!response.ok || response.status !== 200) {
+    if (!response.ok) {
       throw Error(`Bad request/unable to connect.`);
     }
     return response;
@@ -17,11 +17,12 @@ export class ApiRequester {
 
   async postData(data: any) {
     console.log(`postData`, data);
+    console.log(`postData`, process.env.REACT_APP_API_URL);
     const response = await (
       await fetch(`${process.env.REACT_APP_API_URL}`)
     ).json();
-    if (!response.ok || response.status !== 200) {
-      throw Error(`Bad request/unable to connect.`);
+    if (!response.ok) {
+      throw Error(`Bad request/unable to connect. ${JSON.stringify(response)}`);
     }
     return response;
   }
