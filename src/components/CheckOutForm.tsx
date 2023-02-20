@@ -11,7 +11,8 @@ const formSubmit = async (e: React.FormEvent, apiRequester: ApiRequester) => {
   console.log(`submit`);
   const data = await apiRequester.postData("test");
   console.log(data);
-  window.parent.postMessage("complete", "*");
+  // TODO: reenable accordingly to proceed from shopify
+  //window.parent.postMessage("complete", "*");
 };
 
 export default function CheckOutForm(props: CheckOutProps) {
