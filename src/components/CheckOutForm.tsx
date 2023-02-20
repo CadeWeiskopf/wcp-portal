@@ -1,16 +1,19 @@
-import { CartProps } from "../tools/AppContext";
+import { useContext, useEffect } from "react";
+import { ApiRequester } from "../tools/ApiRequester";
+import AppContext, { CartProps } from "../tools/AppContext";
 
 interface CheckOutProps {
   cart: CartProps;
 }
 
-const formSubmit = (e: React.FormEvent) => {
+const formSubmit = async (e: React.FormEvent, apiRequester: ApiRequester) => {
   e.preventDefault();
   console.log(`submit`);
   window.parent.postMessage("complete", "*");
 };
 
 export default function CheckOutForm(props: CheckOutProps) {
+  const { apiRequester } = useContext(AppContext);
   return (
     <div className="form-container">
       <div className="form-header-container">
@@ -18,7 +21,7 @@ export default function CheckOutForm(props: CheckOutProps) {
       </div>
       <form
         className="form-body-container"
-        onSubmit={formSubmit}
+        onSubmit={(e) => formSubmit(e, apiRequester)}
       >
         {props.cart.items.map((item, index) => (
           <p key={index}>
