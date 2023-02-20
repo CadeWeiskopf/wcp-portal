@@ -1,12 +1,22 @@
 export class ApiRequester {
   constructor() {
-    //alert(window.parent.localStorage.getItem("shopify_cart"));
     if (!process.env.REACT_APP_API_URL) {
       throw Error("Missing environment variables");
     }
   }
 
   async getData() {
+    const response = await (
+      await fetch(`${process.env.REACT_APP_API_URL}`)
+    ).json();
+    if (!response.ok || response.status !== 200) {
+      throw Error(`Bad request/unable to connect.`);
+    }
+    return response;
+  }
+
+  async postData(data: any) {
+    console.log(`postData`, data);
     const response = await (
       await fetch(`${process.env.REACT_APP_API_URL}`)
     ).json();

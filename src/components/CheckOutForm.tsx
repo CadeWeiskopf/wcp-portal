@@ -9,6 +9,7 @@ interface CheckOutProps {
 const formSubmit = async (e: React.FormEvent, apiRequester: ApiRequester) => {
   e.preventDefault();
   console.log(`submit`);
+  apiRequester.postData("test");
   window.parent.postMessage("complete", "*");
 };
 

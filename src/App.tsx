@@ -21,26 +21,8 @@ function App() {
   } = useContext(AppContext);
 
   useEffect(() => {
-    /*async function getData() {
-      setLoadingMessage("Getting data...");
-      setIsLoading(true);
-      try {
-        const response = await apiRequester.getData();
-      } catch (e) {
-        setIsLoading(false);
-        setIsError(true);
-        if (e instanceof Error) {
-          setErrorMessage(`${e.message}. Please refresh and try again.`);
-        } else {
-          setErrorMessage("Unexpected error. Please refresh and try again.");
-        }
-      }
-    }
-    getData();*/
     window.addEventListener("message", (e) => {
-      //console.log(e);
       if (e.origin === "https://csgcwtest.myshopify.com") {
-        //console.log(`shopifyData->`, e.data);
         setCart(e.data);
       }
     });
