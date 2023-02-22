@@ -6,10 +6,14 @@ interface CheckOutProps {
   cart: CartProps;
 }
 
-const formSubmit = async (e: React.FormEvent, apiRequester: ApiRequester) => {
+const formSubmit = async (
+  e: React.FormEvent,
+  apiRequester: ApiRequester,
+  cart: CartProps
+) => {
   e.preventDefault();
   console.log(`submit`);
-  const data = await apiRequester.postData("test");
+  const data = await apiRequester.postData(cart);
   console.log(data);
   // TODO: reenable accordingly to proceed from shopify
   //window.parent.postMessage("complete", "*");
@@ -26,7 +30,7 @@ export default function CheckOutForm(props: CheckOutProps) {
         className="form-body-container"
         onSubmit={(e) => {
           e.preventDefault();
-          formSubmit(e, apiRequester);
+          formSubmit(e, apiRequester, props.cart);
         }}
       >
         {props.cart.items.map((item, index) => (

@@ -5,21 +5,14 @@ export class ApiRequester {
     }
   }
 
-  async getData() {
-    const response = await (
-      await fetch(`${process.env.REACT_APP_API_URL}`)
-    ).json();
-    if (!response.ok) {
-      throw Error(`Bad request/unable to connect.`);
-    }
-    return response;
-  }
-
   async postData(data: any) {
     console.log(`postData`, data);
     console.log(`postData`, process.env.REACT_APP_API_URL);
     const response = await (
-      await fetch(`${process.env.REACT_APP_API_URL}`)
+      await fetch(`${process.env.REACT_APP_API_URL}`, {
+        method: "POST",
+        body: data,
+      })
     ).json();
     if (!response.ok) {
       throw Error(`Bad request/unable to connect. ${JSON.stringify(response)}`);
