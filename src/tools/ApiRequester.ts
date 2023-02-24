@@ -11,7 +11,7 @@ export class ApiRequester {
     const response = await (
       await fetch(`${process.env.REACT_APP_API_URL}`, {
         method: "POST",
-        body: data,
+        body: JSON.stringify(data),
       })
     ).json();
     if (!response.ok) {

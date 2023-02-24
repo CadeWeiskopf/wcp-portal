@@ -5,6 +5,8 @@ import ErrorWindow from "./components/ErrorWindow";
 import PopupWindow from "./components/PopupWindow";
 import AppContext, { AppContextProvider } from "./tools/AppContext";
 
+const SHOPIFY_SITE = "https://csg-wcp.myshopify.com";
+
 function App() {
   const {
     isError,
@@ -22,7 +24,7 @@ function App() {
 
   useEffect(() => {
     window.addEventListener("message", (e) => {
-      if (e.origin === "https://csgcwtest.myshopify.com") {
+      if (e.origin === SHOPIFY_SITE) {
         setCart(e.data);
       }
     });
