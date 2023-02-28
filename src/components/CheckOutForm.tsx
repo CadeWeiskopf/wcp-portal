@@ -39,10 +39,24 @@ export default function CheckOutForm(props: CheckOutProps) {
           </p>
         ))}
         <input
-          type="text"
-          placeholder="test"
-          required
+          type="email"
+          name="vzrepemail"
+          placeholder="VZ Rep Email"
         />
+        <select name="csgrep">
+          <option
+            value=""
+            disabled
+            selected
+            hidden
+          >
+            If applicable, select CSG Sales Rep.
+          </option>
+        </select>
+        <textarea
+          placeholder="Special notes"
+          rows={4}
+        ></textarea>
         <button>Submit</button>
       </form>
     </div>
