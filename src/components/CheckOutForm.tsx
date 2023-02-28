@@ -45,7 +45,7 @@ export default function CheckOutForm(props: CheckOutProps) {
         />
         <select name="csgrep">
           <option
-            value=""
+            defaultValue=""
             disabled
             selected
             hidden
@@ -54,6 +54,7 @@ export default function CheckOutForm(props: CheckOutProps) {
           </option>
         </select>
         <textarea
+          name="specialnotes"
           placeholder="Special notes"
           rows={4}
         ></textarea>
