@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ApiRequester } from "../tools/ApiRequester";
 import AppContext, { CartProps } from "../tools/AppContext";
 
@@ -15,12 +15,15 @@ const formSubmit = async (
   console.log(`submit`);
   const data = await apiRequester.postData(cart);
   console.log(data);
+  alert(data.soId);
   // TODO: reenable accordingly to proceed from shopify
   //window.parent.postMessage("complete", "*");
 };
 
 export default function CheckOutForm(props: CheckOutProps) {
   const { apiRequester } = useContext(AppContext);
+  const [selectedCsgRep, setSelectedCsgRep] = useState("");
+
   return (
     <div className="form-container">
       <div className="form-header-container">
@@ -35,19 +38,28 @@ export default function CheckOutForm(props: CheckOutProps) {
       >
         {props.cart.items.map((item, index) => (
           <p key={index}>
-            {item.product_title} (x {item.quantity})
+            {item.product_title} (x {item.quantity} @ $
+            {item.discounted_price / 100} ea.) = ${item.line_price / 100}
           </p>
         ))}
+        <p>
+          Shipping = {props.cart.shipping_method} ${" "}
+          {props.cart.shipping_price / 100}
+        </p>
+        <p>Estimated Taxes = $ {props.cart.tax_price / 100}</p>
         <input
           type="email"
           name="vzrepemail"
           placeholder="VZ Rep Email"
         />
-        <select name="csgrep">
+        <select
+          name="csgrep"
+          defaultValue={selectedCsgRep}
+          onChange={(e) => setSelectedCsgRep(e.target.value)}
+        >
           <option
-            defaultValue=""
             disabled
-            selected
+            value=""
             hidden
           >
             If applicable, select CSG Sales Rep.
@@ -57,7 +69,7 @@ export default function CheckOutForm(props: CheckOutProps) {
           name="specialnotes"
           placeholder="Special notes"
           rows={4}
-        ></textarea>
+        />
         <button>Submit</button>
       </form>
     </div>

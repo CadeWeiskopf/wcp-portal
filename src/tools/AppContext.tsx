@@ -4,10 +4,16 @@ import { ApiRequester } from "./ApiRequester";
 interface ItemProps {
   product_title: string;
   quantity: number;
+  price: number;
+  discounted_price: number;
+  line_price: number;
 }
 
 export interface CartProps {
   items: ItemProps[];
+  shipping_method: string;
+  shipping_price: number;
+  tax_price: number;
 }
 
 interface AppContextProps {
@@ -34,7 +40,20 @@ const AppContext = React.createContext<AppContextProps>({
   loadingMessage: "",
   setLoadingMessage: () => {},
   apiRequester: new ApiRequester(),
-  cart: { items: [{ product_title: "null", quantity: 0 }] },
+  cart: {
+    tax_price: 0,
+    shipping_method: "null",
+    shipping_price: 0,
+    items: [
+      {
+        product_title: "null",
+        quantity: 0,
+        discounted_price: 0,
+        line_price: 0,
+        price: 0,
+      },
+    ],
+  },
   setCart: () => {},
 });
 
@@ -45,7 +64,18 @@ function AppContextProvider(props: any) {
   const [loadingMessage, setLoadingMessage] = useState<string>("");
   const [apiRequester] = useState<ApiRequester>(new ApiRequester());
   const [cart, setCart] = useState<CartProps>({
-    items: [{ product_title: "null", quantity: 0 }],
+    tax_price: 0,
+    shipping_method: "null",
+    shipping_price: 0,
+    items: [
+      {
+        product_title: "null",
+        quantity: 0,
+        discounted_price: 0,
+        line_price: 0,
+        price: 0,
+      },
+    ],
   });
   return (
     <AppContext.Provider
