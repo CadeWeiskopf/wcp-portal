@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import "./App.css";
 import CheckOutForm from "./components/CheckOutForm";
 import ErrorWindow from "./components/ErrorWindow";
+import PayStand from "./components/PayStand";
 import PopupWindow from "./components/PopupWindow";
 import AppContext, { AppContextProvider } from "./tools/AppContext";
 
@@ -20,6 +21,7 @@ function App() {
     apiRequester,
     cart,
     setCart,
+    payStandLink,
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -34,7 +36,7 @@ function App() {
     <div className="App">
       {isError && <ErrorWindow message={errorMessage} />}
       {isLoading && <PopupWindow message={loadingMessage} />}
-      <CheckOutForm cart={cart} />
+      {payStandLink ? <PayStand /> : <CheckOutForm cart={cart} />}
     </div>
   );
 }

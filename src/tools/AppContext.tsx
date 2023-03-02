@@ -28,6 +28,8 @@ interface AppContextProps {
   apiRequester: ApiRequester;
   cart: CartProps;
   setCart: React.Dispatch<React.SetStateAction<CartProps>>;
+  payStandLink: string;
+  setPayStandLink: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const AppContext = React.createContext<AppContextProps>({
@@ -55,6 +57,8 @@ const AppContext = React.createContext<AppContextProps>({
     ],
   },
   setCart: () => {},
+  payStandLink: "",
+  setPayStandLink: () => {},
 });
 
 function AppContextProvider(props: any) {
@@ -77,6 +81,7 @@ function AppContextProvider(props: any) {
       },
     ],
   });
+  const [payStandLink, setPayStandLink] = useState<string>("");
   return (
     <AppContext.Provider
       value={{
@@ -91,6 +96,8 @@ function AppContextProvider(props: any) {
         apiRequester,
         cart,
         setCart,
+        payStandLink,
+        setPayStandLink,
       }}
     >
       {props.children}

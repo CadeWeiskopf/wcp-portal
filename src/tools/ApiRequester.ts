@@ -1,6 +1,6 @@
 export class ApiRequester {
   constructor() {
-    if (!process.env.REACT_APP_API_URL) {
+    if (!process.env.REACT_APP_API_URL || !process.env.REACT_APP_API_URL) {
       throw Error("Missing environment variables");
     }
   }

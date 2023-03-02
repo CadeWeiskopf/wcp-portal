@@ -9,19 +9,23 @@ interface CheckOutProps {
 const formSubmit = async (
   e: React.FormEvent,
   apiRequester: ApiRequester,
-  cart: CartProps
+  cart: CartProps,
+  setPayStandLink: React.Dispatch<React.SetStateAction<string>>
 ) => {
   e.preventDefault();
   console.log(`submit`);
   const data = await apiRequester.postData(cart);
   console.log(data);
   alert(data.soId);
+  setPayStandLink(
+    `${process.env.REACT_APP_PAYSTAND_LINK}&extSalesOrderId=${data.soId}`
+  );
   // TODO: reenable accordingly to proceed from shopify
   //window.parent.postMessage("complete", "*");
 };
 
 export default function CheckOutForm(props: CheckOutProps) {
-  const { apiRequester } = useContext(AppContext);
+  const { apiRequester, setPayStandLink } = useContext(AppContext);
   const [selectedCsgRep, setSelectedCsgRep] = useState("");
 
   return (
@@ -33,7 +37,7 @@ export default function CheckOutForm(props: CheckOutProps) {
         className="form-body-container"
         onSubmit={(e) => {
           e.preventDefault();
-          formSubmit(e, apiRequester, props.cart);
+          formSubmit(e, apiRequester, props.cart, setPayStandLink);
         }}
       >
         {props.cart.items.map((item, index) => (
