@@ -10,7 +10,9 @@ const formSubmit = async (
   e: React.FormEvent,
   apiRequester: ApiRequester,
   cart: CartProps,
-  setPayStandLink: React.Dispatch<React.SetStateAction<string>>
+  setPayStandLink: React.Dispatch<React.SetStateAction<string>>,
+  setSoId: React.Dispatch<React.SetStateAction<number>>,
+  setSoGuid: React.Dispatch<React.SetStateAction<string>>
 ) => {
   e.preventDefault();
   console.log(`submit`);
@@ -24,7 +26,8 @@ const formSubmit = async (
 };
 
 export default function CheckOutForm(props: CheckOutProps) {
-  const { apiRequester, setPayStandLink } = useContext(AppContext);
+  const { apiRequester, setPayStandLink, setSoId, setSoGuid } =
+    useContext(AppContext);
   const [selectedCsgRep, setSelectedCsgRep] = useState("");
 
   return (
@@ -36,7 +39,14 @@ export default function CheckOutForm(props: CheckOutProps) {
         className="form-body-container"
         onSubmit={(e) => {
           e.preventDefault();
-          formSubmit(e, apiRequester, props.cart, setPayStandLink);
+          formSubmit(
+            e,
+            apiRequester,
+            props.cart,
+            setPayStandLink,
+            setSoId,
+            setSoGuid
+          );
         }}
       >
         {props.cart.items.map((item, index) => (

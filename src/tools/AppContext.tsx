@@ -30,6 +30,10 @@ interface AppContextProps {
   setCart: React.Dispatch<React.SetStateAction<CartProps>>;
   payStandLink: string;
   setPayStandLink: React.Dispatch<React.SetStateAction<string>>;
+  soId: number;
+  setSoId: React.Dispatch<React.SetStateAction<number>>;
+  soGuid: string;
+  setSoGuid: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const AppContext = React.createContext<AppContextProps>({
@@ -59,6 +63,10 @@ const AppContext = React.createContext<AppContextProps>({
   setCart: () => {},
   payStandLink: "",
   setPayStandLink: () => {},
+  soId: 0,
+  setSoId: () => {},
+  soGuid: "",
+  setSoGuid: () => {},
 });
 
 function AppContextProvider(props: any) {
@@ -82,6 +90,8 @@ function AppContextProvider(props: any) {
     ],
   });
   const [payStandLink, setPayStandLink] = useState<string>("");
+  const [soId, setSoId] = useState<number>(0);
+  const [soGuid, setSoGuid] = useState<string>("");
   return (
     <AppContext.Provider
       value={{
@@ -98,6 +108,10 @@ function AppContextProvider(props: any) {
         setCart,
         payStandLink,
         setPayStandLink,
+        soId,
+        setSoId,
+        soGuid,
+        setSoGuid,
       }}
     >
       {props.children}
