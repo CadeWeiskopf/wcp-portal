@@ -2,12 +2,12 @@ import { useContext, useEffect } from "react";
 import AppContext from "../tools/AppContext";
 
 export default function PayStand() {
-  const { payStandLink, apiRequester } = useContext(AppContext);
+  const { payStandLink, apiRequester, soId, soGuid } = useContext(AppContext);
 
   useEffect(() => {
-    const checkIsPaid = () => {
-      apiRequester.isPaid;
-    };
+    const checkIsPaid = () => {};
+    const intervalId = setInterval(checkIsPaid, 1000);
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
