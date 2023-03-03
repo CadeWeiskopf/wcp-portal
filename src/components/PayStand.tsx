@@ -1,8 +1,14 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import AppContext from "../tools/AppContext";
 
 export default function PayStand() {
-  const { payStandLink } = useContext(AppContext);
+  const { payStandLink, apiRequester } = useContext(AppContext);
+
+  useEffect(() => {
+    const checkIsPaid = () => {
+      apiRequester.isPaid;
+    };
+  }, []);
 
   return (
     <iframe

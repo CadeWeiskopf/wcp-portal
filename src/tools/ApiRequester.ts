@@ -19,4 +19,6 @@ export class ApiRequester {
     }
     return response;
   }
+
+  async isPaid(soId: number, soGuid: string) {}
 }
