@@ -16,7 +16,6 @@ const formSubmit = async (
   console.log(`submit`);
   const data = await apiRequester.postData(cart);
   console.log(data);
-  alert(data.soId);
   setPayStandLink(
     `${process.env.REACT_APP_PAYSTAND_LINK}&extSalesOrderId=${data.soId}`
   );
