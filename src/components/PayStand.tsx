@@ -5,7 +5,11 @@ export default function PayStand() {
   const { payStandLink, apiRequester, soId, soGuid } = useContext(AppContext);
 
   useEffect(() => {
-    const checkIsPaid = () => {};
+    const checkIsPaid = () => {
+      if (!apiRequester.isPaid(soId, soGuid)) {
+        return;
+      }
+    };
     const intervalId = setInterval(checkIsPaid, 1000);
     return () => clearInterval(intervalId);
   }, []);
