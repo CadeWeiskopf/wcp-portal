@@ -14,3 +14,13 @@ code {
 
 form {
 }
+
+html {
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+iframe::-webkit-scrollbar {
+  display: none;
+}

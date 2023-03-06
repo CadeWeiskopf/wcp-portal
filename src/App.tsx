@@ -6,7 +6,7 @@ import PayStand from "./components/PayStand";
 import PopupWindow from "./components/PopupWindow";
 import AppContext, { AppContextProvider } from "./tools/AppContext";
 
-const SHOPIFY_SITE = "https://csg-wcp.myshopify.com";
+export const SHOPIFY_SITE = "https://csg-wcp.myshopify.com";
 
 function App() {
   const {
@@ -37,6 +37,9 @@ function App() {
       const formContainer = document.getElementsByClassName(
         "form-container"
       )[0] as HTMLElement;
+      if (!formContainer) {
+        return;
+      }
       window.parent.postMessage(
         { windowHeight: `${formContainer.offsetHeight}px` },
         SHOPIFY_SITE

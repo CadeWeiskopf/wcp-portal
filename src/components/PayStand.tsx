@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import { SHOPIFY_SITE } from "../App";
 import AppContext from "../tools/AppContext";
 
 export default function PayStand() {
@@ -13,7 +14,12 @@ export default function PayStand() {
       }
     };
     const intervalId = setInterval(checkIsPaid, 1000);
-    return () => clearInterval(intervalId);
+
+    window.parent.postMessage({ windowHeight: `1000px` }, SHOPIFY_SITE);
+
+    return () => {
+      clearInterval(intervalId);
+    };
   }, []);
 
   return (
