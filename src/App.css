@@ -34,6 +34,8 @@
 }
 
 .form-input {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
   background-color: white;
   color: #333333;
   border-color: #d9d9d9;
@@ -44,8 +46,10 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
+  max-width: 100%;
   /*height: 100%;*/
-  padding: 0.9285714286em 0.7857142857em;
+  /*padding: 0.9285714286em 0.7857142857em;*/
+  padding: 1em;
   border: none;
   word-break: normal;
   line-height: inherit;

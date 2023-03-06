@@ -68,7 +68,7 @@ export default function CheckOutForm(props: CheckOutProps) {
             className="form-label"
             htmlFor="vzrepemail-id"
           >
-            VZ Rep Email
+            Verizon Rep Email
           </label>
           <input
             type="text"
@@ -95,9 +95,7 @@ export default function CheckOutForm(props: CheckOutProps) {
               disabled
               value=""
               hidden
-            >
-              If applicable, select CSG Sales Rep.
-            </option>
+            ></option>
           </select>
         </div>
         <div className="form-input-container">
@@ -110,7 +108,6 @@ export default function CheckOutForm(props: CheckOutProps) {
           <textarea
             className="form-input"
             name="specialnotes"
-            placeholder="Special notes"
             rows={4}
           />
         </div>
