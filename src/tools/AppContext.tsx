@@ -34,6 +34,8 @@ interface AppContextProps {
   setSoId: React.Dispatch<React.SetStateAction<number>>;
   soGuid: string;
   setSoGuid: React.Dispatch<React.SetStateAction<string>>;
+  isOrderComplete: boolean;
+  setIsOrderComplete: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const AppContext = React.createContext<AppContextProps>({
@@ -67,6 +69,8 @@ const AppContext = React.createContext<AppContextProps>({
   setSoId: () => {},
   soGuid: "",
   setSoGuid: () => {},
+  isOrderComplete: false,
+  setIsOrderComplete: () => {},
 });
 
 function AppContextProvider(props: any) {
@@ -92,6 +96,7 @@ function AppContextProvider(props: any) {
   const [payStandLink, setPayStandLink] = useState<string>("");
   const [soId, setSoId] = useState<number>(0);
   const [soGuid, setSoGuid] = useState<string>("");
+  const [isOrderComplete, setIsOrderComplete] = useState<boolean>(false);
   return (
     <AppContext.Provider
       value={{
@@ -112,6 +117,8 @@ function AppContextProvider(props: any) {
         setSoId,
         soGuid,
         setSoGuid,
+        isOrderComplete,
+        setIsOrderComplete,
       }}
     >
       {props.children}

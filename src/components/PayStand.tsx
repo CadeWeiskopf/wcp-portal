@@ -5,9 +5,10 @@ export default function PayStand() {
   const { payStandLink, apiRequester, soId, soGuid } = useContext(AppContext);
 
   useEffect(() => {
-    const checkIsPaid = () => {
-      if (!apiRequester.isPaid(soId, soGuid)) {
-        return;
+    const checkIsPaid = async () => {
+      const data = await apiRequester.isPaid(soId, soGuid);
+      console.log(data);
+      if (data.paid === true) {
       }
     };
     const intervalId = setInterval(checkIsPaid, 1000);

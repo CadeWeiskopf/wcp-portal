@@ -20,5 +20,15 @@ export class ApiRequester {
     return response;
   }
 
-  async isPaid(soId: number, soGuid: string) {}
+  async isPaid(soId: number, soGuid: string) {
+    console.log(`checkIsPaid`, soId, soGuid);
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}&soId=${soId}&soGuid=${soGuid}`
+    );
+    if (!response.ok || response.status !== 200) {
+      throw Error(`Bad request/connection.`);
+    }
+    const data = await response.json();
+    return data;
+  }
 }
