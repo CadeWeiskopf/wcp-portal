@@ -35,7 +35,7 @@ export default function CheckOutForm(props: CheckOutProps) {
   return (
     <div className="form-container">
       <div className="form-header-container">
-        <h2>FORM</h2>
+        <h2>Review Order</h2>
       </div>
       <form
         className="form-body-container"
@@ -51,6 +51,7 @@ export default function CheckOutForm(props: CheckOutProps) {
           );
         }}
       >
+        {/*
         {props.cart.items.map((item, index) => (
           <p key={index}>
             {item.product_title} (x {item.quantity} @ $
@@ -61,13 +62,13 @@ export default function CheckOutForm(props: CheckOutProps) {
           Shipping = {props.cart.shipping_method} ${" "}
           {props.cart.shipping_price / 100}
         </p>
-        <p>Estimated Taxes = $ {props.cart.tax_price / 100}</p>
+            <p>Estimated Taxes = $ {props.cart.tax_price / 100}</p>*/}
         <div className="form-input-container">
           <label
             className="form-label"
             htmlFor="vzrepemail-id"
           >
-            Test Label
+            VZ Rep Email
           </label>
           <input
             type="text"
@@ -76,26 +77,43 @@ export default function CheckOutForm(props: CheckOutProps) {
             id="vzrepemail-id"
           />
         </div>
-        <select
-          name="csgrep"
-          className="form-input"
-          defaultValue={selectedCsgRep}
-          onChange={(e) => setSelectedCsgRep(e.target.value)}
-        >
-          <option
-            disabled
-            value=""
-            hidden
+        <div className="form-input-container">
+          <label
+            className="form-label"
+            htmlFor="csgrep-id"
           >
-            If applicable, select CSG Sales Rep.
-          </option>
-        </select>
-        <textarea
-          className="form-input"
-          name="specialnotes"
-          placeholder="Special notes"
-          rows={4}
-        />
+            CSG Rep
+          </label>
+          <select
+            id="csgrep-id"
+            name="csgrep"
+            className="form-input"
+            defaultValue={selectedCsgRep}
+            onChange={(e) => setSelectedCsgRep(e.target.value)}
+          >
+            <option
+              disabled
+              value=""
+              hidden
+            >
+              If applicable, select CSG Sales Rep.
+            </option>
+          </select>
+        </div>
+        <div className="form-input-container">
+          <label
+            className="form-label"
+            htmlFor="specialnotes-id"
+          >
+            Additional Notes
+          </label>
+          <textarea
+            className="form-input"
+            name="specialnotes"
+            placeholder="Special notes"
+            rows={4}
+          />
+        </div>
         <button>Submit</button>
       </form>
     </div>
