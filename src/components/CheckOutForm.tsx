@@ -62,12 +62,20 @@ export default function CheckOutForm(props: CheckOutProps) {
           {props.cart.shipping_price / 100}
         </p>
         <p>Estimated Taxes = $ {props.cart.tax_price / 100}</p>
-        <input
-          type="email"
-          className="form-input"
-          name="vzrepemail"
-          placeholder="VZ Rep Email"
-        />
+        <div className="form-input-container">
+          <label
+            className="form-label"
+            htmlFor="vzrepemail-id"
+          >
+            Test Label
+          </label>
+          <input
+            type="text"
+            className="form-input"
+            name="vzrepemail"
+            id="vzrepemail-id"
+          />
+        </div>
         <select
           name="csgrep"
           className="form-input"
@@ -88,13 +96,6 @@ export default function CheckOutForm(props: CheckOutProps) {
           placeholder="Special notes"
           rows={4}
         />
-        <div className="form-input-container">
-          <label className="form-label">Test Label</label>
-          <input
-            type="text"
-            className="form-input"
-          />
-        </div>
         <button>Submit</button>
       </form>
     </div>
