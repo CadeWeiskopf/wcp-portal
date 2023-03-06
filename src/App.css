@@ -13,8 +13,8 @@
 }
 
 .form-container {
-  border: solid 1px white;
-  border-radius: 12px;
+  border: solid 1px #d9d9d9;
+  border-radius: 5px;
   width: 100%;
   max-width: 600px;
   box-sizing: border-box;
