@@ -21,6 +21,8 @@ const formSubmit = async (
   setPayStandLink(
     `${process.env.REACT_APP_PAYSTAND_LINK}&extSalesOrderId=${data.soId}`
   );
+  setSoId(data.soId);
+  setSoGuid(data.soGuid);
   // TODO: reenable accordingly to proceed from shopify
   //window.parent.postMessage("complete", "*");
 };
