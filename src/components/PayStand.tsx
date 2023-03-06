@@ -8,7 +8,6 @@ export default function PayStand() {
   useEffect(() => {
     const checkIsPaid = async () => {
       const data = await apiRequester.isPaid(soId, soGuid);
-      console.log(data);
       if (data.paid === true) {
         setIsOrderComplete(data.paid);
       }

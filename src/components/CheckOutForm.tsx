@@ -35,7 +35,7 @@ export default function CheckOutForm(props: CheckOutProps) {
   return (
     <div className="form-container">
       <div className="form-header-container">
-        <h2>Review Order</h2>
+        <h2>Review & Add Notes</h2>
       </div>
       <form
         className="form-body-container"
@@ -114,7 +114,7 @@ export default function CheckOutForm(props: CheckOutProps) {
             rows={4}
           />
         </div>
-        <button>Submit</button>
+        <button className="form-submit-button">Proceed</button>
       </form>
     </div>
   );

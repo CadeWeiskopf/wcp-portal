@@ -6,8 +6,6 @@ export class ApiRequester {
   }
 
   async postData(data: any) {
-    console.log(`postData`, data);
-    console.log(`postData`, process.env.REACT_APP_API_URL);
     const response = await (
       await fetch(`${process.env.REACT_APP_API_URL}`, {
         method: "POST",
@@ -21,7 +19,6 @@ export class ApiRequester {
   }
 
   async isPaid(soId: number, soGuid: string) {
-    console.log(`checkIsPaid`, soId, soGuid);
     const response = await fetch(
       `${process.env.REACT_APP_API_URL}&soId=${soId}&soGuid=${soGuid}`
     );
