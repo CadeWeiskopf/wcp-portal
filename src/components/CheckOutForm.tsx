@@ -64,11 +64,13 @@ export default function CheckOutForm(props: CheckOutProps) {
         <p>Estimated Taxes = $ {props.cart.tax_price / 100}</p>
         <input
           type="email"
+          className="form-input"
           name="vzrepemail"
           placeholder="VZ Rep Email"
         />
         <select
           name="csgrep"
+          className="form-input"
           defaultValue={selectedCsgRep}
           onChange={(e) => setSelectedCsgRep(e.target.value)}
         >
@@ -81,6 +83,7 @@ export default function CheckOutForm(props: CheckOutProps) {
           </option>
         </select>
         <textarea
+          className="form-input"
           name="specialnotes"
           placeholder="Special notes"
           rows={4}

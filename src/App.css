@@ -29,6 +29,22 @@
   flex-direction: column;
 }
 
+.form-input {
+  background-color: white;
+  color: #333333;
+  border-color: #d9d9d9;
+  border: 1px #d9d9d9 solid;
+  background-clip: padding-box;
+  border-radius: 5px;
+  display: block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.9285714286em 0.7857142857em;
+  word-break: normal;
+  line-height: inherit;
+}
+
 .popupwindow-container {
   background-color: rgba(0, 255, 0, 0.5);
   position: absolute;
