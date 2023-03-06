@@ -33,14 +33,24 @@ function App() {
     };
     window.addEventListener("message", handleMessage);
 
-    const handleHeightResive = () => {
-      console.log(`resize ${document.body.scrollHeight}px`);
+    const postWindowHeight = () => {
+      const formContainer = document.getElementsByClassName(
+        "form-container"
+      )[0] as HTMLElement;
+      window.parent.postMessage(
+        { windowHeight: `${formContainer.offsetHeight}px` },
+        SHOPIFY_SITE
+      );
     };
-    window.addEventListener("resize", handleHeightResive);
+    postWindowHeight();
+    const handleHeightResize = () => {
+      postWindowHeight();
+    };
+    window.addEventListener("resize", handleHeightResize);
 
     return () => {
       window.removeEventListener("message", handleMessage);
-      window.removeEventListener("resize", handleHeightResive);
+      window.removeEventListener("resize", handleHeightResize);
     };
   }, []);
 

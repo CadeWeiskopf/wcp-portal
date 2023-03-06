@@ -23,6 +23,9 @@
 
 .form-header-container {
 }
+.form-header-container > h2 {
+  margin-top: 0;
+}
 
 .form-body-container {
   display: flex;
