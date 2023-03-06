@@ -88,6 +88,13 @@ export default function CheckOutForm(props: CheckOutProps) {
           placeholder="Special notes"
           rows={4}
         />
+        <div className="form-input-container">
+          <label className="form-label">Test Label</label>
+          <input
+            type="text"
+            className="form-input"
+          />
+        </div>
         <button>Submit</button>
       </form>
     </div>
