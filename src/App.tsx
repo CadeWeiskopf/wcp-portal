@@ -22,6 +22,7 @@ function App() {
     cart,
     setCart,
     payStandLink,
+    isOrderComplete,
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -31,6 +32,12 @@ function App() {
       }
     });
   }, []);
+
+  useEffect(() => {
+    if (isOrderComplete === true) {
+      alert("order completed");
+    }
+  }, [isOrderComplete]);
 
   return (
     <div className="App">
