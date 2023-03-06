@@ -26,11 +26,22 @@ function App() {
   } = useContext(AppContext);
 
   useEffect(() => {
-    window.addEventListener("message", (e) => {
+    const handleMessage = (e: MessageEvent) => {
       if (e.origin === SHOPIFY_SITE) {
         setCart(e.data);
       }
-    });
+    };
+    window.addEventListener("message", handleMessage);
+
+    const handleHeightResive = () => {
+      console.log(`resize ${document.body.scrollHeight}px`);
+    };
+    window.addEventListener("resize", handleHeightResive);
+
+    return () => {
+      window.removeEventListener("message", handleMessage);
+      window.removeEventListener("resize", handleHeightResive);
+    };
   }, []);
 
   useEffect(() => {
