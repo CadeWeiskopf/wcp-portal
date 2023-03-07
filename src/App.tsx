@@ -4,7 +4,7 @@ import CheckOutForm from "./components/CheckOutForm";
 import ErrorWindow from "./components/ErrorWindow";
 import PayStand from "./components/PayStand";
 import PopupWindow from "./components/PopupWindow";
-import AppContext, { AppContextProvider } from "./tools/AppContext";
+import AppContext, { AppContextProvider, SalesRep } from "./tools/AppContext";
 
 export const SHOPIFY_SITE = "https://csg-wcp.myshopify.com";
 
@@ -23,6 +23,7 @@ function App() {
     setCart,
     payStandLink,
     isOrderComplete,
+    setSalesReps,
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -50,6 +51,12 @@ function App() {
       postWindowHeight();
     };
     window.addEventListener("resize", handleHeightResize);
+
+    const getData = async () => {
+      const data = await apiRequester.getSalesReps();
+      setSalesReps(data);
+    };
+    getData();
 
     return () => {
       window.removeEventListener("message", handleMessage);

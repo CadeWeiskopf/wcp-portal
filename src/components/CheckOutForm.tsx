@@ -28,7 +28,7 @@ const formSubmit = async (
 };
 
 export default function CheckOutForm(props: CheckOutProps) {
-  const { apiRequester, setPayStandLink, setSoId, setSoGuid } =
+  const { apiRequester, setPayStandLink, setSoId, setSoGuid, salesReps } =
     useContext(AppContext);
   const [selectedCsgRep, setSelectedCsgRep] = useState("");
 
@@ -96,6 +96,16 @@ export default function CheckOutForm(props: CheckOutProps) {
               value=""
               hidden
             ></option>
+            {salesReps?.map((rep, index) => {
+              return (
+                <option
+                  value={rep.id}
+                  key={`rep${index}`}
+                >
+                  {rep.name}
+                </option>
+              );
+            })}
           </select>
         </div>
         <div className="form-input-container">

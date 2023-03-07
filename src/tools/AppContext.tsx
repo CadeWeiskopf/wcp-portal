@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { ApiRequester } from "./ApiRequester";
 
+export interface SalesRep {
+  id: string;
+  name: string;
+}
+
 interface ItemProps {
   product_title: string;
   quantity: number;
@@ -36,6 +41,8 @@ interface AppContextProps {
   setSoGuid: React.Dispatch<React.SetStateAction<string>>;
   isOrderComplete: boolean;
   setIsOrderComplete: React.Dispatch<React.SetStateAction<boolean>>;
+  salesReps: SalesRep[] | null;
+  setSalesReps: React.Dispatch<React.SetStateAction<SalesRep[] | null>>;
 }
 
 const AppContext = React.createContext<AppContextProps>({
@@ -71,6 +78,8 @@ const AppContext = React.createContext<AppContextProps>({
   setSoGuid: () => {},
   isOrderComplete: false,
   setIsOrderComplete: () => {},
+  salesReps: null,
+  setSalesReps: () => {},
 });
 
 function AppContextProvider(props: any) {
@@ -97,6 +106,7 @@ function AppContextProvider(props: any) {
   const [soId, setSoId] = useState<number>(0);
   const [soGuid, setSoGuid] = useState<string>("");
   const [isOrderComplete, setIsOrderComplete] = useState<boolean>(false);
+  const [salesReps, setSalesReps] = useState<SalesRep[] | null>(null);
   return (
     <AppContext.Provider
       value={{
@@ -119,6 +129,8 @@ function AppContextProvider(props: any) {
         setSoGuid,
         isOrderComplete,
         setIsOrderComplete,
+        salesReps,
+        setSalesReps,
       }}
     >
       {props.children}

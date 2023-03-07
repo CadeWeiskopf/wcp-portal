@@ -28,4 +28,13 @@ export class ApiRequester {
     const data = await response.json();
     return data;
   }
+
+  async getSalesReps() {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}&reps=T`);
+    if (!response.ok || response.status !== 200) {
+      throw Error(`Bad request/connection.`);
+    }
+    const data = await response.json();
+    return data;
+  }
 }
