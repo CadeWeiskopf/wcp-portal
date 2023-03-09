@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { ApiRequester } from "../tools/ApiRequester";
 import AppContext, { CartProps } from "../tools/AppContext";
+import { ReactComponent as LoadSpinner } from "../180-ring.svg";
 
 interface CheckOutProps {
   cart: CartProps;
@@ -12,9 +13,11 @@ const formSubmit = async (
   cart: CartProps,
   setPayStandLink: React.Dispatch<React.SetStateAction<string>>,
   setSoId: React.Dispatch<React.SetStateAction<number>>,
-  setSoGuid: React.Dispatch<React.SetStateAction<string>>
+  setSoGuid: React.Dispatch<React.SetStateAction<string>>,
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   e.preventDefault();
+  setIsLoading(true);
   console.log(`submit`);
   const data = await apiRequester.postData(cart);
   console.log(data);
@@ -28,8 +31,15 @@ const formSubmit = async (
 };
 
 export default function CheckOutForm(props: CheckOutProps) {
-  const { apiRequester, setPayStandLink, setSoId, setSoGuid, salesReps } =
-    useContext(AppContext);
+  const {
+    apiRequester,
+    setPayStandLink,
+    setSoId,
+    setSoGuid,
+    salesReps,
+    isLoading,
+    setIsLoading,
+  } = useContext(AppContext);
   const [selectedCsgRep, setSelectedCsgRep] = useState("");
 
   return (
@@ -47,7 +57,8 @@ export default function CheckOutForm(props: CheckOutProps) {
             props.cart,
             setPayStandLink,
             setSoId,
-            setSoGuid
+            setSoGuid,
+            setIsLoading
           );
         }}
       >
@@ -121,7 +132,19 @@ export default function CheckOutForm(props: CheckOutProps) {
             rows={4}
           />
         </div>
-        <button className="form-submit-button">Proceed</button>
+        {!isLoading ? (
+          <button className="form-submit-button">Proceed</button>
+        ) : (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+            }}
+          >
+            <LoadSpinner />
+          </div>
+        )}
       </form>
     </div>
   );

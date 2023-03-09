@@ -73,7 +73,7 @@ function App() {
   return (
     <div className="App">
       {isError && <ErrorWindow message={errorMessage} />}
-      {isLoading && <PopupWindow message={loadingMessage} />}
+      {/*isLoading && <PopupWindow message={loadingMessage} />*/}
       {payStandLink ? <PayStand /> : <CheckOutForm cart={cart} />}
     </div>
   );
